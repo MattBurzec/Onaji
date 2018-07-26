@@ -11,9 +11,8 @@ import UIKit
 class AddUserViewController: UIViewController {
 
     var session: SPTSession?
-//    session = ds
     
-    var button = DropDownBtn()
+    @IBOutlet weak var button: DropDownBtn!
     
     
     @IBOutlet weak var addUsernameLabel: UILabel!
@@ -44,6 +43,12 @@ class AddUserViewController: UIViewController {
     @IBAction func continueButton(_ sender: Any) {
     }
     
+    
+    
+    
+    
+    
+    
     func callSession() {
         let userDefaults = UserDefaults.standard
         if let sessionObj:AnyObject = userDefaults.object(forKey: "SpotifySession") as AnyObject? {
@@ -53,6 +58,9 @@ class AddUserViewController: UIViewController {
         }
         
     }
+    
+    
+    
     
     func getPlaylists() {
         //  todo: set user to current user
@@ -79,34 +87,21 @@ class AddUserViewController: UIViewController {
         }
     }
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         callSession()
         getPlaylists()
-        
-        button = DropDownBtn.init(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
-        button.setTitle("Playlist", for: .normal)
-        button.translatesAutoresizingMaskIntoConstraints = false
-    
-        self.view.addSubview(button)
-        
-        button.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-        button.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
-        
-        
-        button.widthAnchor.constraint(equalToConstant: 150).isActive = true
-        button.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        
-        button.dropView.dropDownOption = ["World", "Hello"]
+        button.dropView.dropDownOption = ["Good", "Morning"]
         
     }
 
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    
 }
 
 
@@ -118,6 +113,7 @@ class DropDownBtn: UIButton, dropDownProtocol {
     
     func dropDownPressed(string: String) {
         self.setTitle(string, for: .normal)
+        self.dismissDropDown()
     }
     
     var dropView = dropDownView()
@@ -132,9 +128,6 @@ class DropDownBtn: UIButton, dropDownProtocol {
         dropView = dropDownView.init(frame: CGRect.init(x: 0, y: 0, width: 0, height: 0))
         dropView.delegate = self
         dropView.translatesAutoresizingMaskIntoConstraints = false
-        
-        
-        
     }
     
     override func didMoveToSuperview() {
@@ -146,8 +139,6 @@ class DropDownBtn: UIButton, dropDownProtocol {
         dropView.widthAnchor.constraint(equalTo: self.widthAnchor).isActive = true
         height = dropView.heightAnchor.constraint(equalToConstant: 0)
     }
-    
-    
     
     var isOpen = false
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -183,9 +174,28 @@ class DropDownBtn: UIButton, dropDownProtocol {
         }
     }
     
+    func dismissDropDown() {
+        isOpen = false
+        
+        NSLayoutConstraint.deactivate([self.height])
+        self.height.constant = 0
+        NSLayoutConstraint.activate([self.height])
+        
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseInOut, animations: {
+            self.dropView.center.y -= self.dropView.frame.height / 2
+            self.dropView.layoutIfNeeded()
+        }, completion: nil)
+    }
     
     required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: aDecoder)
+
+        self.backgroundColor = UIColor.darkGray
+        
+        dropView = dropDownView.init(frame: CGRect.init(x: 0, y: 0, width: 0, height: 0))
+        dropView.delegate = self
+        dropView.translatesAutoresizingMaskIntoConstraints = false
+      
     }
 }
 
@@ -229,7 +239,7 @@ class dropDownView: UIView, UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = UITableViewCell()
+        let cell = UITableViewCell()
         
         cell.backgroundColor = UIColor.darkGray
         
@@ -240,7 +250,7 @@ class dropDownView: UIView, UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.delegate.dropDownPressed(string: dropDownOption[indexPath.row])
-        
+        self.tableView.deselectRow(at: indexPath, animated: true)
     }
     
 }

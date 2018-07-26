@@ -159,8 +159,8 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tLc-CW-zUZ" customClass="DropDownBtn" customModule="Onaji" customModuleProvider="target">
-                                <rect key="frame" x="107" y="376" width="119" height="40"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YMp-3k-Q0u" customClass="DropDownBtn" customModule="Onaji" customModuleProvider="target">
+                                <rect key="frame" x="115" y="369" width="126" height="53"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                             </button>
@@ -170,7 +170,7 @@
                     </view>
                     <connections>
                         <outlet property="addUsernameLabel" destination="mwk-N1-tGm" id="cnP-7F-EHj"/>
-                        <outlet property="button" destination="tLc-CW-zUZ" id="HFq-Xh-TcA"/>
+                        <outlet property="button" destination="YMp-3k-Q0u" id="HEB-gW-VOv"/>
                         <outlet property="firstTextField" destination="a9D-nb-U4L" id="HYy-u6-qgx"/>
                         <outlet property="fourTextField" destination="C9G-67-2CB" id="rYd-2h-DOs"/>
                         <outlet property="playlistTextField" destination="uyK-Ag-FcU" id="awW-mA-rQ1"/>
