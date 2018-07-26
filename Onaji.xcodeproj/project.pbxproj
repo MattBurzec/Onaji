@@ -16,6 +16,7 @@
 		23B8C2A6210670A100464FEC /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B8C2A5210670A100464FEC /* HomeViewController.swift */; };
 		23B8C2B02107ADDB00464FEC /* AddUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B8C2AF2107ADDB00464FEC /* AddUserViewController.swift */; };
 		23B8C2B42107AE1F00464FEC /* MergedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B8C2B32107AE1F00464FEC /* MergedTableViewController.swift */; };
+		23E41222210A49AE00DA481A /* Playlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E41221210A49AE00DA481A /* Playlist.swift */; };
 		23EBF1252102415500A93267 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EBF1242102415500A93267 /* AppDelegate.swift */; };
 		23EBF1272102415500A93267 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EBF1262102415500A93267 /* ViewController.swift */; };
 		23EBF12A2102415500A93267 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23EBF1282102415500A93267 /* Main.storyboard */; };
@@ -33,6 +34,7 @@
 		23B8C2A5210670A100464FEC /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		23B8C2AF2107ADDB00464FEC /* AddUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddUserViewController.swift; sourceTree = "<group>"; };
 		23B8C2B32107AE1F00464FEC /* MergedTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MergedTableViewController.swift; sourceTree = "<group>"; };
+		23E41221210A49AE00DA481A /* Playlist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Playlist.swift; sourceTree = "<group>"; };
 		23EBF1212102415500A93267 /* Onaji.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Onaji.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		23EBF1242102415500A93267 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		23EBF1262102415500A93267 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -72,13 +74,21 @@
 		23B8C29E2106537000464FEC /* View Controllers  */ = {
 			isa = PBXGroup;
 			children = (
-				23B8C2A12106627000464FEC /* User.swift */,
 				23EBF1262102415500A93267 /* ViewController.swift */,
 				23B8C2A5210670A100464FEC /* HomeViewController.swift */,
 				23B8C2AF2107ADDB00464FEC /* AddUserViewController.swift */,
 				23B8C2B32107AE1F00464FEC /* MergedTableViewController.swift */,
 			);
 			path = "View Controllers ";
+			sourceTree = "<group>";
+		};
+		23E41220210A499600DA481A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				23E41221210A49AE00DA481A /* Playlist.swift */,
+				23B8C2A12106627000464FEC /* User.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		23EBF1182102415500A93267 = {
@@ -103,6 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				23EBF1242102415500A93267 /* AppDelegate.swift */,
+				23E41220210A499600DA481A /* Model */,
 				23B8C29E2106537000464FEC /* View Controllers  */,
 				23B8C29D2106536300464FEC /* StoryBoard */,
 				23EBF12B2102415700A93267 /* Assets.xcassets */,
@@ -256,6 +267,7 @@
 				23B8C2B02107ADDB00464FEC /* AddUserViewController.swift in Sources */,
 				23B8C2B42107AE1F00464FEC /* MergedTableViewController.swift in Sources */,
 				23EBF1272102415500A93267 /* ViewController.swift in Sources */,
+				23E41222210A49AE00DA481A /* Playlist.swift in Sources */,
 				23EBF1252102415500A93267 /* AppDelegate.swift in Sources */,
 				23B8C2A22106627000464FEC /* User.swift in Sources */,
 				23B8C2A6210670A100464FEC /* HomeViewController.swift in Sources */,
