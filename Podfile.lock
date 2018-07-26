@@ -1,0 +1,28 @@
+PODS:
+  - AeroGearHttp (2.0.0)
+  - AeroGearOAuth2 (2.0.0):
+    - AeroGearHttp (= 2.0.0)
+  - Alamofire (4.7.3)
+  - OAuthSwift (1.2.2)
+
+DEPENDENCIES:
+  - AeroGearOAuth2
+  - Alamofire (~> 4.7)
+  - OAuthSwift (~> 1.2.0)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - AeroGearHttp
+    - AeroGearOAuth2
+    - Alamofire
+    - OAuthSwift
+
+SPEC CHECKSUMS:
+  AeroGearHttp: 65bf374aefd3521e1d8d33547e4db96047b745aa
+  AeroGearOAuth2: 759cd8f9a8bc0395021d21724cc8f8d0fac34eb6
+  Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
+  OAuthSwift: 27b34fe80b76b67cd8f45571e0be2432bc9f6de1
+
+PODFILE CHECKSUM: 3a602644ebce0938b50e789e146ef4f228560c18
+
+COCOAPODS: 1.5.3

@@ -12,11 +12,42 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    var auth = SPTAuth()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        auth.redirectURL     = URL(string: "Onaji://returnAfterLogin")
+            auth.sessionUserDefaultsKey = "current session"
         // Override point for customization after application launch.
+        configureInitialRootViewController(for: self.window)
         return true
+        
+    }
+    
+    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+        // 2- check if app can handle redirect URL
+        if auth.canHandle(auth.redirectURL) {
+            // 3 - handle callback in closure
+            auth.handleAuthCallback(withTriggeredAuthURL: url, callback: { (error, session) in
+                // 4- handle error
+                guard let session = session else {
+                    return
+                }
+                
+                if error != nil {
+                    print("error!")
+                }
+                // 5- Add session to User Defaults
+                let userDefaults = UserDefaults.standard
+                let sessionData = NSKeyedArchiver.archivedData(withRootObject: session)
+                userDefaults.set(sessionData, forKey: "SpotifySession")
+                userDefaults.synchronize()
+                // 6 - Tell notification center login is successful
+                NotificationCenter.default.post(name: Notification.Name(rawValue: "loginSuccessfull"), object: nil)
+            })
+            
+            return true
+        }
+        return false
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
@@ -44,3 +75,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
+extension AppDelegate {
+    func configureInitialRootViewController(for window: UIWindow?) {
+       let defaults = UserDefaults.standard
+        let initialViewController: UIViewController
+
+        if User.isUserAlreadyLoggedIn() {
+            let storyboard = UIStoryboard(name: "Home", bundle: .main)
+            if let vcinitialViewController = storyboard.instantiateInitialViewController() {
+                initialViewController = vcinitialViewController
+            } else {
+                fatalError("Storyboard not set up")
+            }
+       } else {
+            let storyboard = UIStoryboard(name: "Main", bundle: .main)
+            if let vcinitialViewController = storyboard.instantiateInitialViewController() {
+               initialViewController = vcinitialViewController
+            } else {
+                fatalError("Storyboard not set up")
+            }
+        }
+        window?.rootViewController = initialViewController
+        window?.makeKeyAndVisible()
+    }
+}

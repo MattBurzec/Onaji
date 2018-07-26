@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		02AAA6D09D054AF1B6CA3221 /* Pods_Onaji.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93DEB7B5DB8702492EAB6EBD /* Pods_Onaji.framework */; };
+		230DBC0421045A12008FC92C /* SpotifyAudioPlayback.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 230DBC0121045A11008FC92C /* SpotifyAudioPlayback.framework */; };
+		230DBC0521045A12008FC92C /* SpotifyAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 230DBC0221045A12008FC92C /* SpotifyAuthentication.framework */; };
+		230DBC0621045A12008FC92C /* SpotifyMetadata.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 230DBC0321045A12008FC92C /* SpotifyMetadata.framework */; };
+		23B8C2A02106598800464FEC /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23B8C29F2106598800464FEC /* Home.storyboard */; };
+		23B8C2A22106627000464FEC /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B8C2A12106627000464FEC /* User.swift */; };
+		23B8C2A6210670A100464FEC /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B8C2A5210670A100464FEC /* HomeViewController.swift */; };
+		23B8C2B02107ADDB00464FEC /* AddUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B8C2AF2107ADDB00464FEC /* AddUserViewController.swift */; };
+		23B8C2B42107AE1F00464FEC /* MergedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B8C2B32107AE1F00464FEC /* MergedTableViewController.swift */; };
 		23EBF1252102415500A93267 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EBF1242102415500A93267 /* AppDelegate.swift */; };
 		23EBF1272102415500A93267 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EBF1262102415500A93267 /* ViewController.swift */; };
 		23EBF12A2102415500A93267 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23EBF1282102415500A93267 /* Main.storyboard */; };
@@ -15,6 +24,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		230DBBFD2102BAE0008FC92C /* Onaji-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Onaji-Bridging-Header.h"; sourceTree = "<group>"; };
+		230DBC0121045A11008FC92C /* SpotifyAudioPlayback.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SpotifyAudioPlayback.framework; sourceTree = "<group>"; };
+		230DBC0221045A12008FC92C /* SpotifyAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SpotifyAuthentication.framework; sourceTree = "<group>"; };
+		230DBC0321045A12008FC92C /* SpotifyMetadata.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SpotifyMetadata.framework; sourceTree = "<group>"; };
+		23B8C29F2106598800464FEC /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
+		23B8C2A12106627000464FEC /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		23B8C2A5210670A100464FEC /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		23B8C2AF2107ADDB00464FEC /* AddUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddUserViewController.swift; sourceTree = "<group>"; };
+		23B8C2B32107AE1F00464FEC /* MergedTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MergedTableViewController.swift; sourceTree = "<group>"; };
 		23EBF1212102415500A93267 /* Onaji.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Onaji.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		23EBF1242102415500A93267 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		23EBF1262102415500A93267 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -22,6 +40,9 @@
 		23EBF12B2102415700A93267 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		23EBF12E2102415700A93267 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		23EBF1302102415700A93267 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3BD74D95572E487FA5412546 /* Pods-Onaji.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Onaji.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Onaji/Pods-Onaji.debug.xcconfig"; sourceTree = "<group>"; };
+		837E24BDB344A0590CD62823 /* Pods-Onaji.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Onaji.release.xcconfig"; path = "Pods/Target Support Files/Pods-Onaji/Pods-Onaji.release.xcconfig"; sourceTree = "<group>"; };
+		93DEB7B5DB8702492EAB6EBD /* Pods_Onaji.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Onaji.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +50,44 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				230DBC0621045A12008FC92C /* SpotifyMetadata.framework in Frameworks */,
+				02AAA6D09D054AF1B6CA3221 /* Pods_Onaji.framework in Frameworks */,
+				230DBC0521045A12008FC92C /* SpotifyAuthentication.framework in Frameworks */,
+				230DBC0421045A12008FC92C /* SpotifyAudioPlayback.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		23B8C29D2106536300464FEC /* StoryBoard */ = {
+			isa = PBXGroup;
+			children = (
+				23EBF1282102415500A93267 /* Main.storyboard */,
+				23B8C29F2106598800464FEC /* Home.storyboard */,
+			);
+			path = StoryBoard;
+			sourceTree = "<group>";
+		};
+		23B8C29E2106537000464FEC /* View Controllers  */ = {
+			isa = PBXGroup;
+			children = (
+				23B8C2A12106627000464FEC /* User.swift */,
+				23EBF1262102415500A93267 /* ViewController.swift */,
+				23B8C2A5210670A100464FEC /* HomeViewController.swift */,
+				23B8C2AF2107ADDB00464FEC /* AddUserViewController.swift */,
+				23B8C2B32107AE1F00464FEC /* MergedTableViewController.swift */,
+			);
+			path = "View Controllers ";
+			sourceTree = "<group>";
+		};
 		23EBF1182102415500A93267 = {
 			isa = PBXGroup;
 			children = (
 				23EBF1232102415500A93267 /* Onaji */,
 				23EBF1222102415500A93267 /* Products */,
+				C48F42A8DE129E1432DB9DC6 /* Pods */,
+				525E8EE20695E76E4977CC32 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -55,13 +103,34 @@
 			isa = PBXGroup;
 			children = (
 				23EBF1242102415500A93267 /* AppDelegate.swift */,
-				23EBF1262102415500A93267 /* ViewController.swift */,
-				23EBF1282102415500A93267 /* Main.storyboard */,
+				23B8C29E2106537000464FEC /* View Controllers  */,
+				23B8C29D2106536300464FEC /* StoryBoard */,
 				23EBF12B2102415700A93267 /* Assets.xcassets */,
-				23EBF12D2102415700A93267 /* LaunchScreen.storyboard */,
 				23EBF1302102415700A93267 /* Info.plist */,
+				23EBF12D2102415700A93267 /* LaunchScreen.storyboard */,
+				230DBBFD2102BAE0008FC92C /* Onaji-Bridging-Header.h */,
 			);
 			path = Onaji;
+			sourceTree = "<group>";
+		};
+		525E8EE20695E76E4977CC32 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				230DBC0121045A11008FC92C /* SpotifyAudioPlayback.framework */,
+				230DBC0221045A12008FC92C /* SpotifyAuthentication.framework */,
+				230DBC0321045A12008FC92C /* SpotifyMetadata.framework */,
+				93DEB7B5DB8702492EAB6EBD /* Pods_Onaji.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C48F42A8DE129E1432DB9DC6 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3BD74D95572E487FA5412546 /* Pods-Onaji.debug.xcconfig */,
+				837E24BDB344A0590CD62823 /* Pods-Onaji.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +140,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 23EBF1332102415700A93267 /* Build configuration list for PBXNativeTarget "Onaji" */;
 			buildPhases = (
+				CC1DEBDC0484ED292C586EB8 /* [CP] Check Pods Manifest.lock */,
 				23EBF11D2102415500A93267 /* Sources */,
 				23EBF11E2102415500A93267 /* Frameworks */,
 				23EBF11F2102415500A93267 /* Resources */,
+				5E91D0789F7FC465AF9B7CEA /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -96,6 +167,7 @@
 				TargetAttributes = {
 					23EBF1202102415500A93267 = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 0940;
 					};
 				};
 			};
@@ -125,18 +197,68 @@
 				23EBF12F2102415700A93267 /* LaunchScreen.storyboard in Resources */,
 				23EBF12C2102415700A93267 /* Assets.xcassets in Resources */,
 				23EBF12A2102415500A93267 /* Main.storyboard in Resources */,
+				23B8C2A02106598800464FEC /* Home.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		5E91D0789F7FC465AF9B7CEA /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Onaji/Pods-Onaji-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AeroGearHttp/AeroGearHttp.framework",
+				"${BUILT_PRODUCTS_DIR}/AeroGearOAuth2/AeroGearOAuth2.framework",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/OAuthSwift/OAuthSwift.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AeroGearHttp.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AeroGearOAuth2.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OAuthSwift.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Onaji/Pods-Onaji-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CC1DEBDC0484ED292C586EB8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Onaji-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		23EBF11D2102415500A93267 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				23B8C2B02107ADDB00464FEC /* AddUserViewController.swift in Sources */,
+				23B8C2B42107AE1F00464FEC /* MergedTableViewController.swift in Sources */,
 				23EBF1272102415500A93267 /* ViewController.swift in Sources */,
 				23EBF1252102415500A93267 /* AppDelegate.swift in Sources */,
+				23B8C2A22106627000464FEC /* User.swift in Sources */,
+				23B8C2A6210670A100464FEC /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -278,9 +400,15 @@
 		};
 		23EBF1342102415700A93267 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3BD74D95572E487FA5412546 /* Pods-Onaji.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Onaji/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -288,6 +416,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Matthew-Burzec.Onaji";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Onaji/Onaji-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -295,9 +425,15 @@
 		};
 		23EBF1352102415700A93267 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 837E24BDB344A0590CD62823 /* Pods-Onaji.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Onaji/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -305,6 +441,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Matthew-Burzec.Onaji";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Onaji/Onaji-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
