@@ -32,7 +32,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ed5-ge-n03">
-                                <rect key="frame" x="72" y="175" width="231" height="60"/>
+                                <rect key="frame" x="72" y="219" width="231" height="60"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="QKW-3E-W2B"/>
@@ -80,13 +80,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Playlist" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="a9D-nb-U4L">
-                                <rect key="frame" x="67" y="133" width="174" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B5v-Hf-cLP">
                                 <rect key="frame" x="129" y="554" width="117" height="52"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -100,27 +93,13 @@
                                     <segue destination="Pdk-2B-2vF" kind="show" id="8hk-JL-kza"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Select Playlists" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mwk-N1-tGm">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Select Playlists To Add" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mwk-N1-tGm">
                                 <rect key="frame" x="71" y="95" width="191" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Playlist" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4qL-3p-6EC">
-                                <rect key="frame" x="67" y="199" width="174" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Playlist" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="C9G-67-2CB">
-                                <rect key="frame" x="67" y="331" width="174" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RnE-4X-3NA">
                                 <rect key="frame" x="297" y="131" width="35" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -145,13 +124,6 @@
                                     <action selector="thirdAddUsernameButton:" destination="OJt-uU-igG" eventType="touchUpInside" id="Qaq-0I-dAS"/>
                                 </connections>
                             </button>
-                            <textField hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Playlist" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="omZ-mr-oyD">
-                                <rect key="frame" x="67" y="264" width="174" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Playlist Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uyK-Ag-FcU">
                                 <rect key="frame" x="67" y="454" width="223" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -160,9 +132,28 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YMp-3k-Q0u" customClass="DropDownBtn" customModule="Onaji" customModuleProvider="target">
-                                <rect key="frame" x="115" y="369" width="126" height="53"/>
+                                <rect key="frame" x="67" y="131" width="169" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Playlist "/>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9WO-SS-4DE" customClass="DropDownBtn" customModule="Onaji" customModuleProvider="target">
+                                <rect key="frame" x="67" y="197" width="169" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Playlist 2 "/>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kbh-og-jdl" customClass="DropDownBtn" customModule="Onaji" customModuleProvider="target">
+                                <rect key="frame" x="67" y="264" width="169" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Playlist 3 "/>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SVs-nL-I3f" customClass="DropDownBtn" customModule="Onaji" customModuleProvider="target">
+                                <rect key="frame" x="67" y="330" width="169" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Playlist 4"/>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.25490196079999999" green="0.41176470590000003" blue="0.88235294119999996" alpha="1" colorSpace="calibratedRGB"/>
@@ -171,13 +162,12 @@
                     <connections>
                         <outlet property="addUsernameLabel" destination="mwk-N1-tGm" id="cnP-7F-EHj"/>
                         <outlet property="button" destination="YMp-3k-Q0u" id="HEB-gW-VOv"/>
-                        <outlet property="firstTextField" destination="a9D-nb-U4L" id="HYy-u6-qgx"/>
-                        <outlet property="fourTextField" destination="C9G-67-2CB" id="rYd-2h-DOs"/>
-                        <outlet property="playlistTextField" destination="uyK-Ag-FcU" id="awW-mA-rQ1"/>
+                        <outlet property="playlistFour" destination="SVs-nL-I3f" id="ZQF-vC-vKB"/>
+                        <outlet property="playlistTextField" destination="uyK-Ag-FcU" id="bA8-uP-fyV"/>
+                        <outlet property="playlistThree" destination="kbh-og-jdl" id="YeZ-5T-tHT"/>
+                        <outlet property="playlistTwo" destination="9WO-SS-4DE" id="XrS-xS-flB"/>
                         <outlet property="secondPlus" destination="m3s-J4-eDo" id="Wjl-rR-kac"/>
-                        <outlet property="secondTextField" destination="4qL-3p-6EC" id="vEK-JY-uCX"/>
                         <outlet property="thirdPlus" destination="Hih-ab-fKU" id="v6k-6u-CFp"/>
-                        <outlet property="thirdTextField" destination="omZ-mr-oyD" id="Mn4-rd-6IH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dzw-MK-LC7" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -274,7 +264,6 @@
         <image name="plus-sign-icon-63798" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="8hk-JL-kza"/>
-        <segue reference="rrb-I2-1B4"/>
+        <segue reference="dS1-P3-EyZ"/>
     </inferredMetricsTieBreakers>
 </document>

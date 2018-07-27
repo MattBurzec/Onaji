@@ -13,14 +13,12 @@ class AddUserViewController: UIViewController {
     var session: SPTSession?
     
     @IBOutlet weak var button: DropDownBtn!
-    
+    @IBOutlet weak var playlistTwo: DropDownBtn!
+    @IBOutlet weak var playlistThree: DropDownBtn!
+    @IBOutlet weak var playlistFour: DropDownBtn!
     
     @IBOutlet weak var addUsernameLabel: UILabel!
     
-    @IBOutlet weak var firstTextField: UITextField!
-    @IBOutlet weak var secondTextField: UITextField!
-    @IBOutlet weak var thirdTextField: UITextField!
-    @IBOutlet weak var fourTextField: UITextField!
     
     @IBOutlet weak var secondPlus: UIButton!
     @IBOutlet weak var thirdPlus: UIButton!
@@ -30,15 +28,15 @@ class AddUserViewController: UIViewController {
     
     
     @IBAction func addUsernameButton(_ sender: Any) {
-        secondTextField.isHidden = false
+        playlistTwo.isHidden = false
         secondPlus.isHidden = false
     }
     @IBAction func secondAddUsernameButton(_ sender: Any) {
-        thirdTextField.isHidden = false
+        playlistThree.isHidden = false
         thirdPlus.isHidden = false
     }
     @IBAction func thirdAddUsernameButton(_ sender: Any) {
-        fourTextField.isHidden = false
+        playlistFour.isHidden = false
     }
     @IBAction func continueButton(_ sender: Any) {
     }
@@ -58,6 +56,31 @@ class AddUserViewController: UIViewController {
         }
         
     }
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        callSession()
+        getPlaylists()
+        
+        button = DropDownBtn.init(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+        button.setTitle("Playlist", for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        
+        self.view.addSubview(button)
+        
+        button.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+        button.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
+        
+        
+        button.widthAnchor.constraint(equalToConstant: 150).isActive = true
+        button.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        
+        button.dropView.dropDownOption = ["World", "Hello"]
+        
+    }
+    
+    
     
     
     
@@ -94,6 +117,9 @@ class AddUserViewController: UIViewController {
         callSession()
         getPlaylists()
         button.dropView.dropDownOption = ["Good", "Morning"]
+        playlistTwo.dropView.dropDownOption = ["Hi", "Fop"]
+        playlistThree.dropView.dropDownOption = ["Kobe", "Jordan"]
+        playlistFour.dropView.dropDownOption = ["lemonade", "animals"]
         
     }
 
@@ -123,7 +149,6 @@ class DropDownBtn: UIButton, dropDownProtocol {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        self.backgroundColor = UIColor.darkGray
         
         dropView = dropDownView.init(frame: CGRect.init(x: 0, y: 0, width: 0, height: 0))
         dropView.delegate = self
@@ -190,7 +215,7 @@ class DropDownBtn: UIButton, dropDownProtocol {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
 
-        self.backgroundColor = UIColor.darkGray
+        
         
         dropView = dropDownView.init(frame: CGRect.init(x: 0, y: 0, width: 0, height: 0))
         dropView.delegate = self
@@ -210,8 +235,8 @@ class dropDownView: UIView, UITableViewDelegate, UITableViewDataSource {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        tableView.backgroundColor = UIColor.darkGray
-        self.backgroundColor = UIColor.darkGray
+        tableView.backgroundColor = UIColor.blue
+        self.backgroundColor = UIColor.blue
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -241,7 +266,7 @@ class dropDownView: UIView, UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
         
-        cell.backgroundColor = UIColor.darkGray
+        cell.backgroundColor = UIColor.blue
         
         cell.textLabel?.text = dropDownOption[indexPath.row]
         
