@@ -22,6 +22,8 @@ class HomeViewController: UIViewController {
 
         // Do any additional setup after loading the view.
     }
+    
+    @IBAction func unwindToVC1(segue:UIStoryboardSegue) { }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

@@ -23,13 +23,22 @@ class AddUserViewController: UIViewController {
     @IBOutlet weak var secondPlus: UIButton!
     @IBOutlet weak var thirdPlus: UIButton!
     
+    // array of track
+    var myPlayList = [Playlist]()
 
     @IBOutlet weak var playlistTextField: UITextField!
+    
+    @IBAction func tappedPlaylistTextField(_ sender: Any) {
+        
+    }
     
     
     @IBAction func addUsernameButton(_ sender: Any) {
         playlistTwo.isHidden = false
         secondPlus.isHidden = false
+        
+        
+        
     }
     @IBAction func secondAddUsernameButton(_ sender: Any) {
         playlistThree.isHidden = false
@@ -38,13 +47,31 @@ class AddUserViewController: UIViewController {
     @IBAction func thirdAddUsernameButton(_ sender: Any) {
         playlistFour.isHidden = false
     }
+    
+    
+    
+    
     @IBAction func continueButton(_ sender: Any) {
+        
+        let arrayOfPlaylist = [button.title(for: .normal), playlistTwo.title(for: .normal), playlistThree.title(for: .normal), playlistFour.title(for: .normal)]
+        
+        for eachPL in arrayOfPlaylist{
+           // myPlayList.append(eachPL!)
+        }
+        
+        self.performSegue(withIdentifier: "sendPL", sender: arrayOfPlaylist)
     }
     
-    
-    
-    
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "sendPL"{
+            let pl = sender as! [String]
+            let mergeVC = segue.destination as! MergedTableViewController
+            mergeVC.listPlaylist = pl
+            print(pl)
+        }
+    }
+
     
     
     func callSession() {
@@ -58,34 +85,12 @@ class AddUserViewController: UIViewController {
     }
     
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        callSession()
-        getPlaylists()
-        
-        button = DropDownBtn.init(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
-        button.setTitle("Playlist", for: .normal)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        
-        self.view.addSubview(button)
-        
-        button.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-        button.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
-        
-        
-        button.widthAnchor.constraint(equalToConstant: 150).isActive = true
-        button.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        
-        button.dropView.dropDownOption = ["World", "Hello"]
-        
-    }
     
     
     
+    var playlistInfo: Playlist!
     
-    
-    
-    func getPlaylists() {
+    func getPlaylists(  completion: @escaping([Playlist])-> ()) {
         //  todo: set user to current user
         // TODO: safely unwrap access token
         
@@ -95,17 +100,24 @@ class AddUserViewController: UIViewController {
                 print("\nFound error: \(error)\n")
                 return
             }
-            
+            var playL = [Playlist]()
             let playlists = data as! SPTPlaylistList
-            //          print(playlists.totalListLength)
+            print(playlists)
+            // print(playlists.totalListLength)
             for i in playlists.items {
                 // print(i)
-                let item = i as! SPTPartialPlaylist
-                //                print(item.name)
-//                let playlistNames = item.name
-                
-                let playlistInfo = Playlist(playlist: item)
-                print(playlistInfo)
+                if let item = i as? SPTPartialPlaylist {
+                    // print(item.name)
+                    // let playlistNames = item.name
+                    
+                    self.playlistInfo = Playlist(playlist: item)
+                    let newPL = Playlist(playlist: item)
+                    playL.append(newPL)
+                    
+                    print(self.playlistInfo)
+                    self.dropPLaylist(title: self.playlistInfo.title)
+                    
+                }
             }
         }
     }
@@ -115,20 +127,31 @@ class AddUserViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         callSession()
-        getPlaylists()
-        button.dropView.dropDownOption = ["Good", "Morning"]
-        playlistTwo.dropView.dropDownOption = ["Hi", "Fop"]
-        playlistThree.dropView.dropDownOption = ["Kobe", "Jordan"]
-        playlistFour.dropView.dropDownOption = ["lemonade", "animals"]
-        
+        getPlaylists { (myPL) in
+            self.myPlayList = myPL
+            
+        }
     }
 
+    func dropPLaylist(title: String) {
+        
+        button.dropView.dropDownOption.append(title)
+        button.dropView.tableView.reloadData()
+        playlistTwo.dropView.dropDownOption.append(title)
+        playlistTwo.dropView.tableView.reloadData()
+        playlistThree.dropView.dropDownOption.append(title)
+        playlistThree.dropView.tableView.reloadData()
+        playlistFour.dropView.dropDownOption.append(title)
+        playlistFour.dropView.tableView.reloadData()
+        
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
 }
+
 
 
 protocol dropDownProtocol {
@@ -156,6 +179,8 @@ class DropDownBtn: UIButton, dropDownProtocol {
     }
     
     override func didMoveToSuperview() {
+        guard superview != nil else { return }
+        
         self.superview?.addSubview(dropView)
         self.superview?.bringSubview(toFront: dropView)
         
@@ -215,8 +240,7 @@ class DropDownBtn: UIButton, dropDownProtocol {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
 
-        
-        
+
         dropView = dropDownView.init(frame: CGRect.init(x: 0, y: 0, width: 0, height: 0))
         dropView.delegate = self
         dropView.translatesAutoresizingMaskIntoConstraints = false
@@ -281,76 +305,22 @@ class dropDownView: UIView, UITableViewDelegate, UITableViewDataSource {
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// TODO: only call this for thep playlists that user specifies
 //                SPTPlaylistSnapshot.playlist(withURI: item.uri!, accessToken: self.session!.accessToken!, callback: { (error, data) in
 //                    if let error = error {
 //                        print("\nFound error: SPTPlaylistsnapshot \(error)\n")
 //                        return
 //                    }
-//                    let snapshot = data as! SPTPlaylistSnapshot
-////                    print(snapshot.descriptionText)
 //
 //                })
-
-
-
-
+//
+//
+//
+//
 //                SPTTrack.tracks(withURIs: [item.uri], accessToken: self.session!.accessToken!, market: nil!, callback: { (error, data)  in
 //                        if let error = error {
 //                            print("\nFound error: \(error)\n")
 //                            return
-//
-//                        let track = data as! SPTTrack
-//                        print(track.trackNumber)
 
-
-
-
-//                   let snapshot = data as! SPTPlaylistSnapshot
-//                    print(snapshot.playableUri)
-
-
-
-//                    let tracks = playlistSnapshot.firstTrackPage as! SPTListPage
-//
-//                    for item in tracks.items {
-//                        let track = item as! SPTPartialTrack
-//                        print(track)
-//                    }
-
-
-
-
-//                SPTTrack.tracks(withURIs: [item.uri], accessToken: self.session!.accessToken!, market: nil, callback: { (error, data) in
-//                    let tracks = data as! [SPTTrack]
-//                    print(tracks)
-//                })
 
 
 // cast into array of partial playlists

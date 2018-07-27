@@ -3,26 +3,43 @@ PODS:
   - AeroGearOAuth2 (2.0.0):
     - AeroGearHttp (= 2.0.0)
   - Alamofire (4.7.3)
+  - AlamofireObjectMapper (5.1.0):
+    - Alamofire (~> 4.1)
+    - ObjectMapper (~> 3.3)
+  - AlamoRecord (1.1.1):
+    - AlamofireObjectMapper (~> 5.0)
   - OAuthSwift (1.2.2)
+  - ObjectMapper (3.3.0)
+  - Spartan (1.1.1):
+    - AlamoRecord (~> 1.1.1)
 
 DEPENDENCIES:
   - AeroGearOAuth2
   - Alamofire (~> 4.7)
   - OAuthSwift (~> 1.2.0)
+  - Spartan
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - AeroGearHttp
     - AeroGearOAuth2
     - Alamofire
+    - AlamofireObjectMapper
+    - AlamoRecord
     - OAuthSwift
+    - ObjectMapper
+    - Spartan
 
 SPEC CHECKSUMS:
   AeroGearHttp: 65bf374aefd3521e1d8d33547e4db96047b745aa
   AeroGearOAuth2: 759cd8f9a8bc0395021d21724cc8f8d0fac34eb6
   Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
+  AlamofireObjectMapper: 3395e698901d8b0e6f48b7d0c43bd47875325102
+  AlamoRecord: 78653b9a5da21ab5bb723167e0f552994df85d30
   OAuthSwift: 27b34fe80b76b67cd8f45571e0be2432bc9f6de1
+  ObjectMapper: b612bf8c8e99c4dc0bb6013a51f7c27966ed5da9
+  Spartan: 0e2518f937e590b0dff19350db133110d676ddf0
 
-PODFILE CHECKSUM: 3a602644ebce0938b50e789e146ef4f228560c18
+PODFILE CHECKSUM: 06f3a4349f6e5d4a475b81bd6f92de8291ec0838
 
 COCOAPODS: 1.5.3

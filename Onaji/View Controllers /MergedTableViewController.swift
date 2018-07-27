@@ -10,12 +10,16 @@ import UIKit
 
 class MergedTableViewController: UITableViewController {
 
+    var listPlaylist = [String]()
     
     
     @IBAction func homeButton(_ sender: Any) {
+        
     }
     
-    
+    @IBAction func goBackToOneButtonTapped(_ sender: Any) {
+        performSegue(withIdentifier: "unwindSegueToVC1", sender: self)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
