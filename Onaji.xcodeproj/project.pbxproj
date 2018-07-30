@@ -11,6 +11,7 @@
 		230DBC0421045A12008FC92C /* SpotifyAudioPlayback.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 230DBC0121045A11008FC92C /* SpotifyAudioPlayback.framework */; };
 		230DBC0521045A12008FC92C /* SpotifyAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 230DBC0221045A12008FC92C /* SpotifyAuthentication.framework */; };
 		230DBC0621045A12008FC92C /* SpotifyMetadata.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 230DBC0321045A12008FC92C /* SpotifyMetadata.framework */; };
+		235896D9210FA93900E12984 /* SpotifyHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235896D8210FA93900E12984 /* SpotifyHelper.swift */; };
 		23B8C2A02106598800464FEC /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23B8C29F2106598800464FEC /* Home.storyboard */; };
 		23B8C2A22106627000464FEC /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B8C2A12106627000464FEC /* User.swift */; };
 		23B8C2A6210670A100464FEC /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B8C2A5210670A100464FEC /* HomeViewController.swift */; };
@@ -29,6 +30,7 @@
 		230DBC0121045A11008FC92C /* SpotifyAudioPlayback.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SpotifyAudioPlayback.framework; sourceTree = "<group>"; };
 		230DBC0221045A12008FC92C /* SpotifyAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SpotifyAuthentication.framework; sourceTree = "<group>"; };
 		230DBC0321045A12008FC92C /* SpotifyMetadata.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SpotifyMetadata.framework; sourceTree = "<group>"; };
+		235896D8210FA93900E12984 /* SpotifyHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifyHelper.swift; sourceTree = "<group>"; };
 		23B8C29F2106598800464FEC /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		23B8C2A12106627000464FEC /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		23B8C2A5210670A100464FEC /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 			isa = PBXGroup;
 			children = (
 				23EBF1242102415500A93267 /* AppDelegate.swift */,
+				235896D8210FA93900E12984 /* SpotifyHelper.swift */,
 				23E41220210A499600DA481A /* Model */,
 				23B8C29E2106537000464FEC /* View Controllers  */,
 				23B8C29D2106536300464FEC /* StoryBoard */,
@@ -278,6 +281,7 @@
 				23E41222210A49AE00DA481A /* Playlist.swift in Sources */,
 				23EBF1252102415500A93267 /* AppDelegate.swift in Sources */,
 				23B8C2A22106627000464FEC /* User.swift in Sources */,
+				235896D9210FA93900E12984 /* SpotifyHelper.swift in Sources */,
 				23B8C2A6210670A100464FEC /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -434,6 +438,26 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-framework",
+					"\"AeroGearHttp\"",
+					"-framework",
+					"\"AeroGearOAuth2\"",
+					"-framework",
+					"\"AlamoRecord\"",
+					"-framework",
+					"\"Alamofire\"",
+					"-framework",
+					"\"AlamofireObjectMapper\"",
+					"-framework",
+					"\"OAuthSwift\"",
+					"-framework",
+					"\"ObjectMapper\"",
+					"-framework",
+					"\"Spartan\"",
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Matthew-Burzec.Onaji";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Onaji/Onaji-Bridging-Header.h";
@@ -458,6 +482,26 @@
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-framework",
+					"\"AeroGearHttp\"",
+					"-framework",
+					"\"AeroGearOAuth2\"",
+					"-framework",
+					"\"AlamoRecord\"",
+					"-framework",
+					"\"Alamofire\"",
+					"-framework",
+					"\"AlamofireObjectMapper\"",
+					"-framework",
+					"\"OAuthSwift\"",
+					"-framework",
+					"\"ObjectMapper\"",
+					"-framework",
+					"\"Spartan\"",
+					"-ObjC",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Matthew-Burzec.Onaji";
 				PRODUCT_NAME = "$(TARGET_NAME)";

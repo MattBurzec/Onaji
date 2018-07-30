@@ -112,7 +112,7 @@ class AddUserViewController: UIViewController {
             let pl = sender as! [Playlist]
             let mergeVC = segue.destination as! MergedTableViewController
             mergeVC.listPlaylist = pl
-            print(pl)
+//            print(pl)
         }
     }
 
@@ -146,7 +146,7 @@ class AddUserViewController: UIViewController {
             }
             var playL = [Playlist]()
             let playlists = data as! SPTPlaylistList
-            print(playlists)
+//            print(playlists)
             // print(playlists.totalListLength)
             
             //convert into Model

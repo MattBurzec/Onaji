@@ -13,6 +13,92 @@ class MergedTableViewController: UITableViewController {
     var listPlaylist = [Playlist]()
     
     
+    
+    func getTracks() {
+        guard let session = SpotifyHelper.session else {
+            return assertionFailure("user was logged out")
+        }
+        
+        var playlistSnapshots = [SPTPlaylistSnapshot]()
+        
+        for playlist in listPlaylist {
+            
+            //get SPPlaylistSnapshot
+            SPTPlaylistSnapshot.playlist(withURI: playlist.uri, accessToken: session.accessToken) { (error, data) in
+                
+                guard let snapshot = data as? SPTPlaylistSnapshot else {
+                    return
+                }
+                 //get the first page
+                guard let firstPage = snapshot.firstTrackPage else {
+                    return
+                }
+                
+                print(firstPage.items)
+                
+//                if let itemList = firstPage.items {
+//                    for track in firstPage.items {
+//                        print(track)
+//                    }
+//                    self.checker = true
+//                } else {
+//
+//                }
+                
+                
+                
+                
+                //merge all following pages into one
+//                self.mergePlaylistWithFirstPage(firstPage: firstPage, completion: { (fullPlaylist) in
+//
+//                    guard let tracks = fullPlaylist.items as? [SPTPartialTrack] else {
+//                        fatalError()
+//                    }
+//
+//                    //get the tracks
+//                    print(tracks)
+//
+//                })
+                
+                
+            }
+        }
+        
+    }
+    
+//    let dg = DispatchGroup()
+//
+//    dg.enter()
+//    dg.leave()
+//
+//    dg.notify(queue: DispatchQueue.main) {
+//    <#code#>
+//    }
+    
+    
+    func mergePlaylistWithFirstPage(firstPage: SPTListPage, completion: @escaping (SPTListPage) -> ()) {
+        guard let session = SpotifyHelper.session else {
+            return assertionFailure("user was logged out")
+        }
+        
+        if firstPage.hasNextPage {
+            firstPage.requestNextPage(withAccessToken: session.accessToken, callback: { (error, data) in
+                guard error == nil else {
+                    fatalError()
+                }
+                guard let nextPage = data as? SPTListPage else {
+                    fatalError()
+                }
+                
+                firstPage.appending(nextPage)
+                self.mergePlaylistWithFirstPage(firstPage: firstPage, completion: completion)
+            })
+        } else {
+            completion(firstPage)
+        }
+    }
+    
+    
     @IBAction func homeButton(_ sender: Any) {
         
     }
@@ -29,6 +115,7 @@ class MergedTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        getTracks()
     }
 
     override func didReceiveMemoryWarning() {
