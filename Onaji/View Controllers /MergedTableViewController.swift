@@ -10,7 +10,7 @@ import UIKit
 
 class MergedTableViewController: UITableViewController {
 
-    var listPlaylist = [String]()
+    var listPlaylist = [Playlist]()
     
     
     @IBAction func homeButton(_ sender: Any) {

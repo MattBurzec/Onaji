@@ -24,7 +24,25 @@ class AddUserViewController: UIViewController {
     @IBOutlet weak var thirdPlus: UIButton!
     
     // array of track
-    var myPlayList = [Playlist]()
+    var myPlayList = [Playlist]() {
+        didSet {
+            
+            //update all of the drop down buttons with the new value
+            let arrayOfPlaylistTitles = myPlayList.map { (aPlistlist) -> String in
+                return aPlistlist.title
+            }
+            
+            button.dropView.dropDownOption = arrayOfPlaylistTitles
+            button.dropView.tableView.reloadData()
+            playlistTwo.dropView.dropDownOption = arrayOfPlaylistTitles
+            playlistTwo.dropView.tableView.reloadData()
+            playlistThree.dropView.dropDownOption = arrayOfPlaylistTitles
+            playlistThree.dropView.tableView.reloadData()
+            playlistFour.dropView.dropDownOption = arrayOfPlaylistTitles
+            playlistFour.dropView.tableView.reloadData()
+            
+        }
+    }
 
     @IBOutlet weak var playlistTextField: UITextField!
     
@@ -53,19 +71,45 @@ class AddUserViewController: UIViewController {
     
     @IBAction func continueButton(_ sender: Any) {
         
-        let arrayOfPlaylist = [button.title(for: .normal), playlistTwo.title(for: .normal), playlistThree.title(for: .normal), playlistFour.title(for: .normal)]
+        //[button.title(for: .normal), playlistTwo.title(for: .normal), playlistThree.title(for: .normal), playlistFour.title(for: .normal)]
         
-        for eachPL in arrayOfPlaylist{
-           // myPlayList.append(eachPL!)
+        var arrayOfPlaylist: [Playlist] = []
+        
+        if let selectedRowForPlaylist1 = button.selectedRow {
+            let selectedPlaylist1: Playlist = self.myPlayList[selectedRowForPlaylist1]
+            arrayOfPlaylist.append(selectedPlaylist1)
         }
         
+        if let selectedRowForPlaylist2 = playlistTwo.selectedRow {
+            let selectedPlaylist2: Playlist = self.myPlayList[selectedRowForPlaylist2]
+            arrayOfPlaylist.append(selectedPlaylist2)
+        }
+        
+        if let selectedRowForPlaylist3 = playlistThree.selectedRow {
+            let selectedPlaylist3: Playlist = self.myPlayList[selectedRowForPlaylist3]
+            arrayOfPlaylist.append(selectedPlaylist3)
+        }
+        
+        if let selectedRowForPlaylist4 = playlistFour.selectedRow {
+            let selectedPlaylist4: Playlist = self.myPlayList[selectedRowForPlaylist4]
+            arrayOfPlaylist.append(selectedPlaylist4)
+        }
+        
+        
+        
+        // = [selectedPlaylist1, selectedPlaylist2, selectedPlaylist3, selectedPlaylist4]
+//
+//        for eachPL in arrayOfPlaylist{
+//           // myPlayList.append(eachPL!)
+//        }
+//
         self.performSegue(withIdentifier: "sendPL", sender: arrayOfPlaylist)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "sendPL"{
-            let pl = sender as! [String]
+            let pl = sender as! [Playlist]
             let mergeVC = segue.destination as! MergedTableViewController
             mergeVC.listPlaylist = pl
             print(pl)
@@ -88,7 +132,7 @@ class AddUserViewController: UIViewController {
     
     
     
-    var playlistInfo: Playlist!
+//    var playlistInfo: Playlist!
     
     func getPlaylists(  completion: @escaping([Playlist])-> ()) {
         //  todo: set user to current user
@@ -104,46 +148,31 @@ class AddUserViewController: UIViewController {
             let playlists = data as! SPTPlaylistList
             print(playlists)
             // print(playlists.totalListLength)
+            
+            //convert into Model
             for i in playlists.items {
                 // print(i)
-                if let item = i as? SPTPartialPlaylist {
-                    // print(item.name)
-                    // let playlistNames = item.name
-                    
-                    self.playlistInfo = Playlist(playlist: item)
-                    let newPL = Playlist(playlist: item)
-                    playL.append(newPL)
-                    
-                    print(self.playlistInfo)
-                    self.dropPLaylist(title: self.playlistInfo.title)
-                    
+                guard let partialPlaylist = i as? SPTPartialPlaylist else {
+                    fatalError("wow")
                 }
+                
+                let newPL = Playlist(playlist: partialPlaylist)
+                playL.append(newPL)
             }
+            
+            completion(playL)
         }
     }
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         callSession()
-        getPlaylists { (myPL) in
+        
+        let myCOmpletionWhenPlaylistsIsDone: ([Playlist]) -> () = { (myPL) in
             self.myPlayList = myPL
             
         }
-    }
-
-    func dropPLaylist(title: String) {
-        
-        button.dropView.dropDownOption.append(title)
-        button.dropView.tableView.reloadData()
-        playlistTwo.dropView.dropDownOption.append(title)
-        playlistTwo.dropView.tableView.reloadData()
-        playlistThree.dropView.dropDownOption.append(title)
-        playlistThree.dropView.tableView.reloadData()
-        playlistFour.dropView.dropDownOption.append(title)
-        playlistFour.dropView.tableView.reloadData()
-        
+        getPlaylists(completion: myCOmpletionWhenPlaylistsIsDone)
     }
     
     override func didReceiveMemoryWarning() {
@@ -155,13 +184,16 @@ class AddUserViewController: UIViewController {
 
 
 protocol dropDownProtocol {
-    func dropDownPressed(string: String)
+    func dropDownPressed(rowNumber: Int, string: String)
 }
 
 class DropDownBtn: UIButton, dropDownProtocol {
     
-    func dropDownPressed(string: String) {
+    var selectedRow: Int?
+    
+    func dropDownPressed(rowNumber: Int, string: String) {
         self.setTitle(string, for: .normal)
+        self.selectedRow = rowNumber
         self.dismissDropDown()
     }
     
@@ -298,7 +330,7 @@ class dropDownView: UIView, UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.delegate.dropDownPressed(string: dropDownOption[indexPath.row])
+        self.delegate.dropDownPressed(rowNumber: indexPath.row, string: dropDownOption[indexPath.row])
         self.tableView.deselectRow(at: indexPath, animated: true)
     }
     
