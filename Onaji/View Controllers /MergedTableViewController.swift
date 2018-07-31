@@ -35,46 +35,11 @@ class MergedTableViewController: UITableViewController {
                 }
                 
                 print(firstPage.items)
-                
-//                if let itemList = firstPage.items {
-//                    for track in firstPage.items {
-//                        print(track)
-//                    }
-//                    self.checker = true
-//                } else {
-//
-//                }
-                
-                
-                
-                
-                //merge all following pages into one
-//                self.mergePlaylistWithFirstPage(firstPage: firstPage, completion: { (fullPlaylist) in
-//
-//                    guard let tracks = fullPlaylist.items as? [SPTPartialTrack] else {
-//                        fatalError()
-//                    }
-//
-//                    //get the tracks
-//                    print(tracks)
-//
-//                })
-                
+     
                 
             }
         }
-        
     }
-    
-//    let dg = DispatchGroup()
-//
-//    dg.enter()
-//    dg.leave()
-//
-//    dg.notify(queue: DispatchQueue.main) {
-//    <#code#>
-//    }
-    
     
     func mergePlaylistWithFirstPage(firstPage: SPTListPage, completion: @escaping (SPTListPage) -> ()) {
         guard let session = SpotifyHelper.session else {
