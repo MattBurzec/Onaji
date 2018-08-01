@@ -12,6 +12,7 @@ class AddUserViewController: UIViewController {
 
     var session: SPTSession?
     
+    //Mark: Playlist Button
     @IBOutlet weak var button: DropDownBtn!
     @IBOutlet weak var playlistTwo: DropDownBtn!
     @IBOutlet weak var playlistThree: DropDownBtn!
@@ -22,6 +23,23 @@ class AddUserViewController: UIViewController {
     
     @IBOutlet weak var secondPlus: UIButton!
     @IBOutlet weak var thirdPlus: UIButton!
+    
+    //Mark: Button Variables
+    @IBOutlet weak var playlistTextField: UITextField!
+    
+    @IBAction func addUsernameButton(_ sender: Any) {
+        playlistTwo.isHidden = false
+        secondPlus.isHidden = false
+        
+    }
+    @IBAction func secondAddUsernameButton(_ sender: Any) {
+        playlistThree.isHidden = false
+        thirdPlus.isHidden = false
+    }
+    @IBAction func thirdAddUsernameButton(_ sender: Any) {
+        playlistFour.isHidden = false
+    }
+    
     
     // array of track
     var myPlayList = [Playlist]() {
@@ -44,31 +62,10 @@ class AddUserViewController: UIViewController {
         }
     }
 
-    @IBOutlet weak var playlistTextField: UITextField!
-    
-    @IBAction func tappedPlaylistTextField(_ sender: Any) {
-        
-    }
+   
     
     
-    @IBAction func addUsernameButton(_ sender: Any) {
-        playlistTwo.isHidden = false
-        secondPlus.isHidden = false
-        
-        
-        
-    }
-    @IBAction func secondAddUsernameButton(_ sender: Any) {
-        playlistThree.isHidden = false
-        thirdPlus.isHidden = false
-    }
-    @IBAction func thirdAddUsernameButton(_ sender: Any) {
-        playlistFour.isHidden = false
-    }
-    
-    
-    
-    
+    //Mark: Identifying Button Selection
     @IBAction func continueButton(_ sender: Any) {
         
         //[button.title(for: .normal), playlistTwo.title(for: .normal), playlistThree.title(for: .normal), playlistFour.title(for: .normal)]
@@ -96,28 +93,26 @@ class AddUserViewController: UIViewController {
         }
         
         
-        
-        // = [selectedPlaylist1, selectedPlaylist2, selectedPlaylist3, selectedPlaylist4]
-//
-//        for eachPL in arrayOfPlaylist{
-//           // myPlayList.append(eachPL!)
-//        }
-//
         self.performSegue(withIdentifier: "sendPL", sender: arrayOfPlaylist)
     }
     
+    
+    // MARK: Segue to MergeVC
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "sendPL"{
             let pl = sender as! [Playlist]
             let mergeVC = segue.destination as! MergedTableViewController
+            
             mergeVC.listPlaylist = pl
-//            print(pl)
+            print(mergeVC.listPlaylist)
+            
+            let DestViewController : MergedTableViewController = segue.destination as! MergedTableViewController
+            DestViewController.playlistNameText = self.playlistTextField.text!
         }
     }
-
     
-    
+    //Mark Calling Session
     func callSession() {
         let userDefaults = UserDefaults.standard
         if let sessionObj:AnyObject = userDefaults.object(forKey: "SpotifySession") as AnyObject? {
@@ -128,12 +123,7 @@ class AddUserViewController: UIViewController {
         
     }
     
-    
-    
-    
-    
-//    var playlistInfo: Playlist!
-    
+    //Mark: Getting Playlist Information
     func getPlaylists(  completion: @escaping([Playlist])-> ()) {
         //  todo: set user to current user
         // TODO: safely unwrap access token
@@ -146,7 +136,6 @@ class AddUserViewController: UIViewController {
             }
             var playL = [Playlist]()
             let playlists = data as! SPTPlaylistList
-//            print(playlists)
             // print(playlists.totalListLength)
             
             //convert into Model
@@ -164,6 +153,7 @@ class AddUserViewController: UIViewController {
         }
     }
     
+    //Mark: ViewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         callSession()
@@ -183,6 +173,9 @@ class AddUserViewController: UIViewController {
 
 
 
+
+
+//Mark: DropDownBar Implementation
 protocol dropDownProtocol {
     func dropDownPressed(rowNumber: Int, string: String)
 }
@@ -336,26 +329,3 @@ class dropDownView: UIView, UITableViewDelegate, UITableViewDataSource {
     
 }
 
-
-//                SPTPlaylistSnapshot.playlist(withURI: item.uri!, accessToken: self.session!.accessToken!, callback: { (error, data) in
-//                    if let error = error {
-//                        print("\nFound error: SPTPlaylistsnapshot \(error)\n")
-//                        return
-//                    }
-//
-//                })
-//
-//
-//
-//
-//                SPTTrack.tracks(withURIs: [item.uri], accessToken: self.session!.accessToken!, market: nil!, callback: { (error, data)  in
-//                        if let error = error {
-//                            print("\nFound error: \(error)\n")
-//                            return
-
-
-
-// cast into array of partial playlists
-// get the id of each partial playlist
-// get playlist snapshot for each id
-// get tracks for each snapshot

@@ -12,11 +12,19 @@ struct Track {
     var name: String
     var identifier : String
     var playableUri: URL
+    var artist: String
     
     init(track: SPTPartialTrack) {
         self.name = track.name
         self.identifier = String(track.identifier)
         self.playableUri = track.playableUri
+        
+        let artistPartials = track.artists as! [SPTPartialArtist]
+        let artists = artistPartials.map { (aPartialArtist) -> String in
+            return aPartialArtist.name
+        }
+            self.artist = artists.joined(separator: ", ")
     }
-    
 }
+
+

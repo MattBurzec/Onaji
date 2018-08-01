@@ -13,10 +13,12 @@ struct Playlist {
     var count: String
     var uri: URL
     
+    
     init(playlist: SPTPartialPlaylist) {
         self.title = playlist.name
         self.count = String(playlist.trackCount)
         self.uri = playlist.uri
+        
     }
     
 }
