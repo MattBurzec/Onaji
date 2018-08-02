@@ -26,59 +26,116 @@ class MergedTableViewController: UITableViewController{
         performSegue(withIdentifier: "unwindSegueToVC1", sender: self)
     }
     
-    
     //Mark: Getting Tracks Call
-    func getTracks(  completion: @escaping([Track])-> ()) {
+    func getTracks(for playlists: [Playlist], completion: @escaping ([Playlist]) -> ()) {
         guard let session = SpotifyHelper.session else {
             return
         }
         
+        let dg = DispatchGroup()
+        
+        var newFilledPlaylists = [Playlist]()
+        
         //Mark: Getting Tracks From Playlist
-        for playlist in listPlaylist {
+        for playlist in playlists {
+            
+            dg.enter()
             
             SPTPlaylistSnapshot.playlist(withURI: playlist.uri, accessToken: session.accessToken) { (error, data) in
-                guard let snapshot = data as? SPTPlaylistSnapshot else {
-                    return assertionFailure("User logged out")
+                if let error = error {
+                    fatalError(error.localizedDescription)
                 }
+                
+                guard let snapshot = data as? SPTPlaylistSnapshot else {
+                    return assertionFailure("data didn't come and no error was given")
+                }
+                
                  //get the first page
                 guard let firstPage = snapshot.firstTrackPage else {
                     return
                 }
+                
+                guard firstPage.hasNextPage == false else {
+                    fatalError("this playlist \(playlist.title), was not downloaded completly. You must merge the pages together")
+                }
+                
                 let selectedTracks = firstPage.items as? [SPTPartialTrack]
-                var arrayOfTrack = [Track]()
+                var arrayOfTracks = [Track]()
                 for track in selectedTracks! {
                     let newTrack = Track(track: track)
-                    arrayOfTrack.append(newTrack)
+                    arrayOfTracks.append(newTrack)
                 }
-//                print(firstPage.items)
-                completion(arrayOfTrack)
+                
+                var filledPlaylist = playlist
+                filledPlaylist.tracks = arrayOfTracks
+            
+                newFilledPlaylists.append(filledPlaylist)
+                
+                dg.leave()
             }
-    
+        }
+        
+        
+        dg.notify(queue: DispatchQueue.main) {
+            completion(newFilledPlaylists)
         }
     }
+
 
     //Mark: ViewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
-            playlistNameLabel.text = playlistNameText
-        getTracks { tracks in
-            self.sortingTracks(arrayOfTracks: tracks)
+        playlistNameLabel.text = playlistNameText
+        getTracks(for: listPlaylist) { (newPlaylistsThatContainTracks) in
+            self.currentTracks = self.applySortingAlgorithm(on: newPlaylistsThatContainTracks)
+            self.tableView.reloadData()
         }
     }
     
-    func sortingTracks(arrayOfTracks: [Track]) {
-        var sortedArray = arrayOfTracks
+    func applySortingAlgorithm(on playlists: [Playlist]) -> [Track] {
+        var sortedArray = [Track]()
         
+        guard
+            var tracksOfFirstPlaylist = playlists[0].tracks,
+            var tracksOfSecondPlaylist = playlists[1].tracks else {
+                return []
+        }
         
+        for (_, aTrack) in tracksOfFirstPlaylist.enumerated() {
+            let isA_TrackInsideOfSecondPlaylist = tracksOfSecondPlaylist.contains(where: { (aTrackToCompare) -> Bool in
+                if aTrack.identifier == aTrackToCompare.identifier {
+                    return true
+                } else {
+                    return false
+                }
+            })
+            
+            if isA_TrackInsideOfSecondPlaylist {
+                let indexOfFirstTrack = tracksOfFirstPlaylist.index { (aTrackToCompare) -> Bool in
+                    if aTrack.identifier == aTrackToCompare.identifier {
+                        return true
+                    } else {
+                        return false
+                    }
+                    }!
+                let trackToCopy = tracksOfFirstPlaylist.remove(at: indexOfFirstTrack)
+                let indexOfSecondTrack = tracksOfSecondPlaylist.index { (aTrackToCompare) -> Bool in
+                    if aTrack.identifier == aTrackToCompare.identifier {
+                        return true
+                    } else {
+                        return false
+                    }
+                }!
+                tracksOfSecondPlaylist.remove(at: indexOfSecondTrack)
+                sortedArray.append(trackToCopy)
+            }
+        }
         
+        //add the remaing tracks not found in both playlists at the bottom of sortedArray
+        sortedArray.append(contentsOf: tracksOfFirstPlaylist)
+        sortedArray.append(contentsOf: tracksOfSecondPlaylist)
         
-        
-        
-        
-        
-        
-        self.currentTracks = sortedArray
-        self.tableView.reloadData()
+        return sortedArray
     }
     
     

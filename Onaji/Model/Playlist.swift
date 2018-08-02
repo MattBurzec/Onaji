@@ -12,6 +12,7 @@ struct Playlist {
     var title: String
     var count: String
     var uri: URL
+    var tracks: [Track]? = nil
     
     
     init(playlist: SPTPartialPlaylist) {
