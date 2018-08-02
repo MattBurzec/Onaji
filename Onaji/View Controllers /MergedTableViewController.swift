@@ -93,49 +93,84 @@ class MergedTableViewController: UITableViewController{
     }
     
     func applySortingAlgorithm(on playlists: [Playlist]) -> [Track] {
-        var sortedArray = [Track]()
         
-        guard
-            var tracksOfFirstPlaylist = playlists[0].tracks,
-            var tracksOfSecondPlaylist = playlists[1].tracks else {
-                return []
+        var playlistsToPop = playlists
+        var allTracks = [Track]()
+        while playlistsToPop.count > 0 {
+            let playlist = playlistsToPop.popLast()!
+            allTracks.append(contentsOf: playlist.tracks!)
         }
         
-        for (_, aTrack) in tracksOfFirstPlaylist.enumerated() {
-            let isA_TrackInsideOfSecondPlaylist = tracksOfSecondPlaylist.contains(where: { (aTrackToCompare) -> Bool in
-                if aTrack.identifier == aTrackToCompare.identifier {
-                    return true
-                } else {
-                    return false
-                }
-            })
-            
-            if isA_TrackInsideOfSecondPlaylist {
-                let indexOfFirstTrack = tracksOfFirstPlaylist.index { (aTrackToCompare) -> Bool in
-                    if aTrack.identifier == aTrackToCompare.identifier {
-                        return true
-                    } else {
-                        return false
-                    }
-                    }!
-                let trackToCopy = tracksOfFirstPlaylist.remove(at: indexOfFirstTrack)
-                let indexOfSecondTrack = tracksOfSecondPlaylist.index { (aTrackToCompare) -> Bool in
-                    if aTrack.identifier == aTrackToCompare.identifier {
-                        return true
-                    } else {
-                        return false
-                    }
-                }!
-                tracksOfSecondPlaylist.remove(at: indexOfSecondTrack)
-                sortedArray.append(trackToCopy)
+        var histrogram: [String: Int] = [:]
+        for aArack in allTracks {
+            if histrogram[aArack.identifier] != nil {
+                histrogram[aArack.identifier]! += 1
+            } else {
+                histrogram[aArack.identifier] = 1
             }
         }
         
-        //add the remaing tracks not found in both playlists at the bottom of sortedArray
-        sortedArray.append(contentsOf: tracksOfFirstPlaylist)
-        sortedArray.append(contentsOf: tracksOfSecondPlaylist)
+        let keysWith4 = histrogram.compactMap({ (keyValuePair) -> String? in
+            let key = keyValuePair.key
+            let value = keyValuePair.value
+            
+            if value == 4 {
+                return key
+            } else {
+                return nil
+            }
+        })
         
-        return sortedArray
+        let tracksWith4 = allTracks.filter { (aTrack) -> Bool in
+            return keysWith4.contains(aTrack.identifier)
+        }.unique
+        
+        let keysWith3 = histrogram.compactMap({ (keyValuePair) -> String? in
+            let key = keyValuePair.key
+            let value = keyValuePair.value
+            
+            if value == 3 {
+                return key
+            } else {
+                return nil
+            }
+        })
+        
+        let tracksWith3 = allTracks.filter { (aTrack) -> Bool in
+            return keysWith3.contains(aTrack.identifier)
+        }.unique
+        
+        let keysWith2 = histrogram.compactMap({ (keyValuePair) -> String? in
+            let key = keyValuePair.key
+            let value = keyValuePair.value
+            
+            if value == 2 {
+                return key
+            } else {
+                return nil
+            }
+        })
+        
+        let tracksWith2 = allTracks.filter { (aTrack) -> Bool in
+            return keysWith2.contains(aTrack.identifier)
+        }.unique
+        
+        let allOtherKeys = histrogram.compactMap({ (keyValuePair) -> String? in
+            let key = keyValuePair.key
+            let value = keyValuePair.value
+            
+            if value == 1 {
+                return key
+            } else {
+                return nil
+            }
+        })
+        
+        let allOtherTracks = allTracks.filter { (aTrack) -> Bool in
+            return allOtherKeys.contains(aTrack.identifier)
+        }.unique
+
+        return tracksWith4 + tracksWith3 + tracksWith2 + allOtherTracks
     }
     
     
@@ -165,3 +200,42 @@ class MergedTableViewController: UITableViewController{
     }
 }
 
+
+//        guard
+//            var tracksOfFirstPlaylist = playlists[0].tracks,
+//            var tracksOfSecondPlaylist = playlists[1].tracks else {
+//                return []
+//        }
+//
+//        for (_, aTrack) in tracksOfFirstPlaylist.enumerated() {
+//            let isA_TrackInsideOfSecondPlaylist = tracksOfSecondPlaylist.contains(where: { (aTrackToCompare) -> Bool in
+//                if aTrack.identifier == aTrackToCompare.identifier {
+//                    return true
+//                } else {
+//                    return false
+//                }
+//            })
+//
+//            if isA_TrackInsideOfSecondPlaylist {
+//                let indexOfFirstTrack = tracksOfFirstPlaylist.index { (aTrackToCompare) -> Bool in
+//                    if aTrack.identifier == aTrackToCompare.identifier {
+//                        return true
+//                    } else {
+//                        return false
+//                    }
+//                    }!
+//                let trackToCopy = tracksOfFirstPlaylist.remove(at: indexOfFirstTrack)
+//                let indexOfSecondTrack = tracksOfSecondPlaylist.index { (aTrackToCompare) -> Bool in
+//                    if aTrack.identifier == aTrackToCompare.identifier {
+//                        return true
+//                    } else {
+//                        return false
+//                    }
+//                }!
+//                tracksOfSecondPlaylist.remove(at: indexOfSecondTrack)
+//                sortedArray.append(trackToCopy)
+//            }
+//        }
+
+//add the remaing tracks not found in both //        sortedArray.append(contentsOf: tracksOfFirstPlaylist)
+//        sortedArray.append(contentsOf: tracksOfSecondPlaylist)

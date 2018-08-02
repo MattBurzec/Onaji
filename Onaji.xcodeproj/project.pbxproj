@@ -18,6 +18,7 @@
 		23B8C2A6210670A100464FEC /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B8C2A5210670A100464FEC /* HomeViewController.swift */; };
 		23B8C2B02107ADDB00464FEC /* AddUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B8C2AF2107ADDB00464FEC /* AddUserViewController.swift */; };
 		23B8C2B42107AE1F00464FEC /* MergedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B8C2B32107AE1F00464FEC /* MergedTableViewController.swift */; };
+		23B9704C2112E5D20068BA01 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B9704B2112E5D20068BA01 /* Array.swift */; };
 		23E41222210A49AE00DA481A /* Playlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E41221210A49AE00DA481A /* Playlist.swift */; };
 		23EBF1252102415500A93267 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EBF1242102415500A93267 /* AppDelegate.swift */; };
 		23EBF1272102415500A93267 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EBF1262102415500A93267 /* ViewController.swift */; };
@@ -38,6 +39,7 @@
 		23B8C2A5210670A100464FEC /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		23B8C2AF2107ADDB00464FEC /* AddUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddUserViewController.swift; sourceTree = "<group>"; };
 		23B8C2B32107AE1F00464FEC /* MergedTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MergedTableViewController.swift; sourceTree = "<group>"; };
+		23B9704B2112E5D20068BA01 /* Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 		23E41221210A49AE00DA481A /* Playlist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Playlist.swift; sourceTree = "<group>"; };
 		23EBF1212102415500A93267 /* Onaji.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Onaji.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		23EBF1242102415500A93267 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -86,6 +88,14 @@
 			path = "View Controllers ";
 			sourceTree = "<group>";
 		};
+		23B9704A2112E5C10068BA01 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				23B9704B2112E5D20068BA01 /* Array.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		23E41220210A499600DA481A /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -117,6 +127,7 @@
 		23EBF1232102415500A93267 /* Onaji */ = {
 			isa = PBXGroup;
 			children = (
+				23B9704A2112E5C10068BA01 /* Extensions */,
 				23EBF1242102415500A93267 /* AppDelegate.swift */,
 				235896D8210FA93900E12984 /* SpotifyHelper.swift */,
 				23E41220210A499600DA481A /* Model */,
@@ -279,6 +290,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				23B8C2B02107ADDB00464FEC /* AddUserViewController.swift in Sources */,
+				23B9704C2112E5D20068BA01 /* Array.swift in Sources */,
 				23B8C2B42107AE1F00464FEC /* MergedTableViewController.swift in Sources */,
 				23EBF1272102415500A93267 /* ViewController.swift in Sources */,
 				23E41222210A49AE00DA481A /* Playlist.swift in Sources */,

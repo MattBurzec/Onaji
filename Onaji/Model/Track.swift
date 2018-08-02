@@ -27,4 +27,10 @@ struct Track {
     }
 }
 
+extension Track: Equatable {
+    
+    public static func == (lhs: Track, rhs: Track) -> Bool {
+        return lhs.identifier == rhs.identifier
+    }
+}
 
